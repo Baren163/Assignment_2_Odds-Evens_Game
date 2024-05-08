@@ -22,12 +22,28 @@ public class Game {
     MessageCli.START_ROUND.printMessage(String.valueOf(currentSet.getRoundNumber()));
     MessageCli.ASK_INPUT.printMessage();
 
-    String input = Utils.scanner.nextLine();
+    boolean validNumberGiven = false;
 
-    if (!Utils.isInteger(input)) {
-      MessageCli.INVALID_INPUT.printMessage();
+    while (!validNumberGiven) {
+      String input = Utils.scanner.nextLine();
+
+      int inputInt = -1;
+
+      try {
+        inputInt = Integer.parseInt(input);
+      } catch (NumberFormatException e) {
+        MessageCli.INVALID_INPUT.printMessage();
+      }
+
+      if (!Utils.isInteger(input)) {
+        MessageCli.INVALID_INPUT.printMessage();
+      } if (inputInt > 5 | inputInt < 0) {
+        MessageCli.INVALID_INPUT.printMessage();
+      }
+    
+      validNumberGiven = true;
+
     }
-
   }
 
   public void endGame() {
