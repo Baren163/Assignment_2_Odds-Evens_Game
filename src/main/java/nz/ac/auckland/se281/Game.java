@@ -48,7 +48,7 @@ public class Game {
         validNumberGiven = false;
       }
 
-      if (inputInt <= 5 | inputInt >= 0) {
+      if (inputInt <= 5 & inputInt >= 0) {
         validNumberGiven = true;
       }
     }
