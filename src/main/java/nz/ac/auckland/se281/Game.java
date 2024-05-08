@@ -20,7 +20,13 @@ public class Game {
     currentSet.incrementRoundNumber();
 
     MessageCli.START_ROUND.printMessage(String.valueOf(currentSet.getRoundNumber()));
+    MessageCli.ASK_INPUT.printMessage();
 
+    String input = Utils.scanner.nextLine();
+
+    if (!Utils.isInteger(input)) {
+      MessageCli.INVALID_INPUT.printMessage();
+    }
 
   }
 
