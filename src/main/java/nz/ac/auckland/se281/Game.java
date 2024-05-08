@@ -13,6 +13,8 @@ public class Game {
     MessageCli.WELCOME_PLAYER.printMessage(options[0]);
 
     currentSet = new RoundSet();
+
+    currentSet.setPlayerName(options[0]);
   }
 
   public void play() {
@@ -23,9 +25,11 @@ public class Game {
     MessageCli.ASK_INPUT.printMessage();
 
     boolean validNumberGiven = false;
+    String input = null;
 
     while (!validNumberGiven) {
-      String input = Utils.scanner.nextLine();
+
+      input = Utils.scanner.nextLine();
 
       int inputInt = -1;
 
@@ -33,17 +37,26 @@ public class Game {
         inputInt = Integer.parseInt(input);
       } catch (NumberFormatException e) {
         MessageCli.INVALID_INPUT.printMessage();
+        validNumberGiven = false;
       }
 
       if (!Utils.isInteger(input)) {
         MessageCli.INVALID_INPUT.printMessage();
+        validNumberGiven = false;
       } if (inputInt > 5 | inputInt < 0) {
         MessageCli.INVALID_INPUT.printMessage();
+        validNumberGiven = false;
       }
-    
-      validNumberGiven = true;
 
+      if (inputInt <= 5 | inputInt >= 0) {
+        validNumberGiven = true;
+      }
     }
+    // If you have made it here then you have a valid human finger amount as a string in variable input
+    //and as an int in inputInt
+
+    MessageCli.PRINT_INFO_HAND.printMessage(currentSet.getPlayername(), input);
+
   }
 
   public void endGame() {
