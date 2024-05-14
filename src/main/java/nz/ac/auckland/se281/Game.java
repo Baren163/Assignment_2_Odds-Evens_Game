@@ -6,6 +6,8 @@ import nz.ac.auckland.se281.Main.Difficulty;
 /** This class represents the Game is the main entry point. */
 public class Game {
 
+  String botName = "HAL-9000";
+
   RoundSet currentSet;
 
   public void newGame(Difficulty difficulty, Choice choice, String[] options) {
@@ -55,7 +57,13 @@ public class Game {
     // If you have made it here then you have a valid human finger amount as a string in variable input
     //and as an int in inputInt
 
+    // PRINT_INFO_HAND("Player %s: fingers: %s")
     MessageCli.PRINT_INFO_HAND.printMessage(currentSet.getPlayername(), input);
+
+    int botValueInt = Utils.getRandomNumberRange(1, 5);
+    String botValue = String.valueOf(botValueInt);
+
+    MessageCli.PRINT_INFO_HAND.printMessage(botName, botValue);
 
   }
 
