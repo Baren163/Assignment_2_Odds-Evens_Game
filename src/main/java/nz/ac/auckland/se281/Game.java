@@ -14,56 +14,27 @@ public class Game {
     // the first element of options[0]; is the name of the player
     MessageCli.WELCOME_PLAYER.printMessage(options[0]);
 
-    currentSet = new RoundSet();
+
+    currentSet = new RoundSet(choice, difficulty, options[0]);
 
     currentSet.setPlayerName(options[0]);
   }
 
   public void play() {
 
+    if (currentSet == null) {
+      MessageCli.GAME_NOT_STARTED.printMessage();
+      return;
+    }
+
     currentSet.incrementRoundNumber();
 
+    // START_ROUND("Start Round #%s:")
     MessageCli.START_ROUND.printMessage(String.valueOf(currentSet.getRoundNumber()));
-    MessageCli.ASK_INPUT.printMessage();
 
-    boolean validNumberGiven = false;
-    String input = null;
+    currentSet.playRound();
 
-    while (!validNumberGiven) {
-
-      input = Utils.scanner.nextLine();
-
-      int inputInt = -1;
-
-      try {
-        inputInt = Integer.parseInt(input);
-      } catch (NumberFormatException e) {
-        MessageCli.INVALID_INPUT.printMessage();
-        validNumberGiven = false;
-      }
-
-      if (!Utils.isInteger(input)) {
-        MessageCli.INVALID_INPUT.printMessage();
-        validNumberGiven = false;
-      } if (inputInt > 5 | inputInt < 0) {
-        MessageCli.INVALID_INPUT.printMessage();
-        validNumberGiven = false;
-      }
-
-      if (inputInt <= 5 & inputInt >= 0) {
-        validNumberGiven = true;
-      }
-    }
-    // If you have made it here then you have a valid human finger amount as a string in variable input
-    //and as an int in inputInt
-
-    // PRINT_INFO_HAND("Player %s: fingers: %s")
-    MessageCli.PRINT_INFO_HAND.printMessage(currentSet.getPlayername(), input);
-
-    Bot computer = BotFactory.createBot("EASY");
-
-    MessageCli.PRINT_INFO_HAND.printMessage("HAL-9000", computer.generateFingers());
-
+   
   }
 
   public void endGame() {

@@ -1,23 +1,25 @@
 package nz.ac.auckland.se281;
 
+import nz.ac.auckland.se281.Main.Difficulty;
+
 public class BotFactory {
   
-  public static Bot createBot(String type) {
+  public static Bot createBot(Difficulty type) {
 
     boolean redo = true;
-    
+
     while (redo == true) {
 
       redo = false;
 
       switch (type) {
-      case "EASY":
+      case EASY:
       return new EasyBot();
 
-      case "MEDIUM":
+      case MEDIUM:
       return new MedBot();
 
-      case "HARD":
+      case HARD:
       return new HardBot();
 
       default:
