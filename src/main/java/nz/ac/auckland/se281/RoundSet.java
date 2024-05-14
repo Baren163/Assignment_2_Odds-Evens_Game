@@ -1,5 +1,7 @@
 package nz.ac.auckland.se281;
 
+import static nz.ac.auckland.se281.Main.Command.valueOf;
+
 import nz.ac.auckland.se281.Main.Choice;
 import nz.ac.auckland.se281.Main.Difficulty;
 
@@ -29,12 +31,11 @@ public class RoundSet implements GameForm {
 
     boolean validNumberGiven = false;
     String input = null;
+    int inputInt = -1;
 
     while (!validNumberGiven) {
 
       input = Utils.scanner.nextLine();
-
-      int inputInt = -1;
 
       try {
         inputInt = Integer.parseInt(input);
@@ -68,6 +69,27 @@ public class RoundSet implements GameForm {
     // PRINT_INFO_HAND("Player %s: fingers: %s")
     MessageCli.PRINT_INFO_HAND.printMessage("HAL-9000", botFingers);
 
+    // Find winner of round
+   int sum = Integer.valueOf(botFingers) + inputInt;
+
+   String sumString = String.valueOf(sum);
+   String winner;
+   String winningSide = "ODD";
+
+    if (Utils.isEven(sum) && this.playerChoice.equals(Choice.EVEN) || Utils.isOdd(sum) && this.playerChoice.equals(Choice.ODD)) {
+      winner = this.playerName;
+      winningSide = String.valueOf(this.playerChoice);
+    } else {
+      winner = "HAL-9000";
+      if (this.playerChoice.equals(Choice.EVEN)) {
+        winningSide = "ODD";
+      } else if (this.playerChoice.equals(Choice.ODD)) {
+        winningSide = "EVEN";
+      }
+    }
+
+    // PRINT_OUTCOME_ROUND("The sum is : %s, is %s, player %s wins!")
+    MessageCli.PRINT_OUTCOME_ROUND.printMessage(sumString, winningSide, winner);
   }
 
   public void incrementRoundNumber() {
