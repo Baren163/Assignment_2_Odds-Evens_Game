@@ -6,7 +6,7 @@ import nz.ac.auckland.se281.Main.Difficulty;
 /** This class represents the Game is the main entry point. */
 public class Game {
 
-  String botName = "HAL-9000";
+  
 
   RoundSet currentSet;
 
@@ -60,10 +60,9 @@ public class Game {
     // PRINT_INFO_HAND("Player %s: fingers: %s")
     MessageCli.PRINT_INFO_HAND.printMessage(currentSet.getPlayername(), input);
 
-    int botValueInt = Utils.getRandomNumberRange(1, 5);
-    String botValue = String.valueOf(botValueInt);
+    Bot computer = BotFactory.createBot("EASY");
 
-    MessageCli.PRINT_INFO_HAND.printMessage(botName, botValue);
+    MessageCli.PRINT_INFO_HAND.printMessage("HAL-9000", computer.generateFingers());
 
   }
 
