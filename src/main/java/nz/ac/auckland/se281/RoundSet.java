@@ -1,7 +1,5 @@
 package nz.ac.auckland.se281;
 
-import static nz.ac.auckland.se281.Main.Command.valueOf;
-
 import nz.ac.auckland.se281.Main.Choice;
 import nz.ac.auckland.se281.Main.Difficulty;
 
@@ -27,6 +25,7 @@ public class RoundSet implements GameForm {
 
   public void playRound() {
 
+    // ASK_INPUT("Give <fingers> and press enter")
     MessageCli.ASK_INPUT.printMessage();
 
     boolean validNumberGiven = false;
@@ -90,6 +89,13 @@ public class RoundSet implements GameForm {
 
     // PRINT_OUTCOME_ROUND("The sum is : %s, is %s, player %s wins!")
     MessageCli.PRINT_OUTCOME_ROUND.printMessage(sumString, winningSide, winner);
+
+    
+    if (Utils.isEven(inputInt)) {
+      this.numberOfEvensPlayed++;
+    } else if (Utils.isOdd(inputInt)) {
+      this.numberOfOddsPlayed++;
+    }
   }
 
   public void incrementRoundNumber() {
