@@ -11,12 +11,18 @@ public class RoundSet implements GameForm {
   private String playerName;
 
   private Choice playerChoice;
+  private Choice botChoice;
   private Difficulty botDifficulty;
 
   public RoundSet(Choice choice, Difficulty difficulty, String playerName) {
     this.playerChoice = choice;
     this.botDifficulty = difficulty;
     this.playerName = playerName;
+    if (this.playerChoice.equals(Choice.EVEN)) {
+      this.botChoice = Choice.ODD;
+    } else if (this.playerChoice.equals(Choice.ODD)) {
+      this.botChoice = Choice.EVEN;
+    }
 
     this.roundNumber = 0;
     this.numberOfEvensPlayed = 0;
@@ -24,6 +30,8 @@ public class RoundSet implements GameForm {
   }
 
   public void playRound() {
+
+    this.roundNumber++;
 
     // ASK_INPUT("Give <fingers> and press enter")
     MessageCli.ASK_INPUT.printMessage();
@@ -63,7 +71,7 @@ public class RoundSet implements GameForm {
 
     Bot computer = BotFactory.createBot(this.botDifficulty);
 
-    String botFingers = computer.generateFingers();
+    String botFingers = computer.generateFingers(this.roundNumber);
 
     // PRINT_INFO_HAND("Player %s: fingers: %s")
     MessageCli.PRINT_INFO_HAND.printMessage("HAL-9000", botFingers);
@@ -90,16 +98,12 @@ public class RoundSet implements GameForm {
     // PRINT_OUTCOME_ROUND("The sum is : %s, is %s, player %s wins!")
     MessageCli.PRINT_OUTCOME_ROUND.printMessage(sumString, winningSide, winner);
 
-    
+
     if (Utils.isEven(inputInt)) {
       this.numberOfEvensPlayed++;
     } else if (Utils.isOdd(inputInt)) {
       this.numberOfOddsPlayed++;
     }
-  }
-
-  public void incrementRoundNumber() {
-    this.roundNumber ++;
   }
 
   public void setPlayerName(String name) {
@@ -122,5 +126,8 @@ public class RoundSet implements GameForm {
     return this.numberOfOddsPlayed;
   }
 
+  public Choice getBotChoice() {
+    return this.botChoice;
+  }
 
 }

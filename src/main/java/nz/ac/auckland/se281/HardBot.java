@@ -1,7 +1,7 @@
 package nz.ac.auckland.se281;
 
 public class HardBot implements Bot {
-  public String generateFingers() {
+  public String generateFingers(int roundNumber) {
 
     int botValueInt = Utils.getRandomNumberRange(1, 5);
     String botValue = String.valueOf(botValueInt);

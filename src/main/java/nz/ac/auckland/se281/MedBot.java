@@ -1,13 +1,18 @@
 package nz.ac.auckland.se281;
 
 public class MedBot implements Bot {
-  public String generateFingers() {
+  public String generateFingers(int roundNumber) {
 
-    int botValueInt = Utils.getRandomNumberRange(1, 5);
-    String botValue = String.valueOf(botValueInt);
-    MessageCli.PRINT_INFO_HAND.printMessage("HAL-9000", botValue);
+    GenerateNumber number = new GenerateNumber(new Random());
 
-    return botValue;
+    if (roundNumber < 4) {
+      return number.formNumber();
+    } else {
+      number.setStrategy(new Top());
+      return number.formNumber();
+    }
+
+
   }
 
 }

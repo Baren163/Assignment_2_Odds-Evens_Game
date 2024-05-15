@@ -27,8 +27,6 @@ public class Game {
       return;
     }
 
-    currentSet.incrementRoundNumber();
-
     // START_ROUND("Start Round #%s:")
     MessageCli.START_ROUND.printMessage(String.valueOf(currentSet.getRoundNumber()));
 
