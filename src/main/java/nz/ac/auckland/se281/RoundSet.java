@@ -33,6 +33,9 @@ public class RoundSet implements GameForm {
 
     this.roundNumber++;
 
+    // START_ROUND("Start Round #%s:")
+    MessageCli.START_ROUND.printMessage(String.valueOf(this.roundNumber));
+
     // ASK_INPUT("Give <fingers> and press enter")
     MessageCli.ASK_INPUT.printMessage();
 
