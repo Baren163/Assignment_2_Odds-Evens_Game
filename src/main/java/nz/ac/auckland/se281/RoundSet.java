@@ -73,7 +73,11 @@ public class RoundSet implements GameForm {
     // PRINT_INFO_HAND("Player %s: fingers: %s")
     MessageCli.PRINT_INFO_HAND.printMessage(this.playerName, input);
 
+
+
     Bot computer = BotFactory.createBot(this.botDifficulty);
+
+
 
     String botFingers = computer.generateFingers(this.roundNumber, this.numberOfEvensPlayed, this.numberOfOddsPlayed, this.botChoice);
 

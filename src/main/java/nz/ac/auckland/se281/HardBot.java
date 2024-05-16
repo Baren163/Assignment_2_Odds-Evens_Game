@@ -3,15 +3,34 @@ package nz.ac.auckland.se281;
 import nz.ac.auckland.se281.Main.Choice;
 
 public class HardBot implements Bot {
+
   public String generateFingers(int roundNumber, int numberEvensPlayed, int numberOddsPlayed, Choice botSide) {
 
-    // Needs to check
+    GenerateNumber number = new GenerateNumber(new Random());
 
-    int botValueInt = Utils.getRandomNumberRange(1, 5);
-    String botValue = String.valueOf(botValueInt);
-    MessageCli.PRINT_INFO_HAND.printMessage("HAL-9000", botValue);
+    if (roundNumber < 4) {
 
-    return botValue;
+      return number.formNumber();
+
+    } else {
+      
+      // if (We lost the previous round) {
+        // if (previous strategy was Random) {
+          // setStrategy(Top)
+        // } else if (previous strategy was Top) {
+          // setStrategy(Random)
+        // }
+        // return number.formNumber();
+      // } else if (We won the previous round) {
+        // setStrategy (previous strategy)
+        // return number.formNumber();
+      // }
+
+      number.setStrategy(new Top(numberEvensPlayed, numberOddsPlayed, botSide));
+      return number.formNumber();
+    }
+
   }
+
 
 }
