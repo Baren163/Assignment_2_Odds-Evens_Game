@@ -4,7 +4,7 @@ public interface GameForm {
 
   public int getRoundNumber();
 
-  public int getNumberOfEvensPlayes();
+  public int getNumberOfEvensPlayed();
 
-  public int getNumberOfOddsPlayes();
+  public int getNumberOfOddsPlayed();
 }

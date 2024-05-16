@@ -12,6 +12,7 @@ public class RoundSet implements GameForm {
 
   private Choice playerChoice;
   private Choice botChoice;
+
   private Difficulty botDifficulty;
 
   public RoundSet(Choice choice, Difficulty difficulty, String playerName) {
@@ -74,7 +75,7 @@ public class RoundSet implements GameForm {
 
     Bot computer = BotFactory.createBot(this.botDifficulty);
 
-    String botFingers = computer.generateFingers(this.roundNumber);
+    String botFingers = computer.generateFingers(this.roundNumber, this.numberOfEvensPlayed, this.numberOfOddsPlayed, this.botChoice);
 
     // PRINT_INFO_HAND("Player %s: fingers: %s")
     MessageCli.PRINT_INFO_HAND.printMessage("HAL-9000", botFingers);
@@ -121,11 +122,11 @@ public class RoundSet implements GameForm {
     return this.roundNumber;
   }
 
-  public int getNumberOfEvensPlayes() {
+  public int getNumberOfEvensPlayed() {
     return this.numberOfEvensPlayed;
   }
 
-  public int getNumberOfOddsPlayes() {
+  public int getNumberOfOddsPlayed() {
     return this.numberOfOddsPlayed;
   }
 
