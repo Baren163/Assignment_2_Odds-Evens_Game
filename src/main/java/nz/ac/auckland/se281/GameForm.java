@@ -2,9 +2,7 @@ package nz.ac.auckland.se281;
 
 public interface GameForm {
 
-  public int getRoundNumber();
+  public void setPlayerName(String name);
 
-  public int getNumberOfEvensPlayed();
-
-  public int getNumberOfOddsPlayed();
+  public void playRound();
 }

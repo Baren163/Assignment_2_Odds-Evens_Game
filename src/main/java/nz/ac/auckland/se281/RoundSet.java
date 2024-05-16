@@ -114,24 +114,4 @@ public class RoundSet implements GameForm {
     this.playerName = name;
   }
 
-  public String getPlayername() {
-    return this.playerName;
-  }
-
-  public int getRoundNumber() {
-    return this.roundNumber;
-  }
-
-  public int getNumberOfEvensPlayed() {
-    return this.numberOfEvensPlayed;
-  }
-
-  public int getNumberOfOddsPlayed() {
-    return this.numberOfOddsPlayed;
-  }
-
-  public Choice getBotChoice() {
-    return this.botChoice;
-  }
-
 }
