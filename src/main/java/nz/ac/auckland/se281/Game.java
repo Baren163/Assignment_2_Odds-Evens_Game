@@ -11,13 +11,14 @@ public class Game {
   RoundSet currentSet;
 
   public void newGame(Difficulty difficulty, Choice choice, String[] options) {
+
+
+
+
     // the first element of options[0]; is the name of the player
     MessageCli.WELCOME_PLAYER.printMessage(options[0]);
 
-
     currentSet = new RoundSet(choice, difficulty, options[0]);
-
-    currentSet.setPlayerName(options[0]);
   }
 
   public void play() {

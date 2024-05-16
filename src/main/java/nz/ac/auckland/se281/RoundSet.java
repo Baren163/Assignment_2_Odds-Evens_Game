@@ -110,8 +110,4 @@ public class RoundSet implements GameForm {
     }
   }
 
-  public void setPlayerName(String name) {
-    this.playerName = name;
-  }
-
 }
