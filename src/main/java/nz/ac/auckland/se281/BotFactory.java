@@ -6,13 +6,15 @@ public class BotFactory {
   
   /**
    * A part of the Factory design pattern, creates a
-   * bot with a certain difficulty level
-   * 
-   * 
+   * bot with a certain difficulty level.
+
    * @param type difficulty of bot to create
    * @return a bot with given difficulty
    */
   public static Bot createBot(Difficulty type) {
+
+    // Using switch case to determine what difficuly of bot to create
+    // based on the given type
 
     boolean redo = true;
 

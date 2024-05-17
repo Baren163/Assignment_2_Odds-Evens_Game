@@ -8,6 +8,13 @@ public class Top implements Strategy {
   private int numberOddsPlayed;
   private Choice botSide;
 
+  /**
+  * Constructor for the Top strategy
+
+  * @param numberEvensPlayed
+  * @param numberOddsPlayed
+  * @param botSide is the Choice Enum and is what the bot needs to win
+  */
   public Top(int numberEvensPlayed, int numberOddsPlayed, Choice botSide) {
     this.numberEvensPlayed = numberEvensPlayed;
     this.numberOddsPlayed = numberOddsPlayed;
@@ -15,16 +22,18 @@ public class Top implements Strategy {
   }
   
   /**
-   * Generates a random even number between 0 and 5 if the
-   * number of evens played is greater than the number of
-   * odds playes and generates a random odd number between
-   * 0 and 5 otherwise unless the evens and odds are equal
-   * in which case it will generate a random number between
-   * 0 and 5
-   */
+  * Generates a random even number between 0 and 5 if the
+  * number of evens played is greater than the number of
+  * odds playes and generates a random odd number between
+  * 0 and 5 otherwise unless the evens and odds are equal
+  * in which case it will generate a random number between
+  * 0 and 5.
+  */
   @Override
   public String generate() {
 
+    // Checking if either more even or odds have been played or if they
+    // have been played the same amount
     if (numberOddsPlayed > numberEvensPlayed) {
       if (botSide.equals(Choice.ODD)) {
         int botValueInt = Utils.getRandomEvenNumber();

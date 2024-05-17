@@ -21,6 +21,15 @@ public class RoundSet {
   private int numberOfGamesPlayerWon;
   private int numberOfGamesBotWon;
 
+  /**
+  * Constructor for the RoundSet class that sets the game up to be played by
+  * taking in the players choice, the difficulty level of bot and the players
+  * name.
+
+  * @param choice Enum Choice of either EVEN or ODD
+  * @param difficulty Enum Difficulty of either EASY, MEDIUM or HARD
+  * @param playerName players name
+  */
   public RoundSet(Choice choice, Difficulty difficulty, String playerName) {
     this.playerChoice = choice;
     this.botDifficulty = difficulty;
@@ -37,11 +46,11 @@ public class RoundSet {
   }
 
   /**
-   * Plays through a full round of the game even or odd by
-   * incrementing the round number to start and then reading in
-   * a value of fingers for the player, then the bot and
-   * calculating who won
-   */
+  * Plays through a full round of the game even or odd by
+  * incrementing the round number to start and then reading in
+  * a value of fingers for the player, then the bot and
+  * calculating who won.
+  */
   public void playRound() {
 
     this.roundNumber++;

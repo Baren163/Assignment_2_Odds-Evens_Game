@@ -7,8 +7,8 @@ public class EasyBot implements Bot {
   private RoundSet currentSet;
 
   /**
-   * Generates a random number using the random strategy
-   * 
+   * Generates a random number using the random strategy.
+
    * @param botSide either EVEN or ODD
    * @return string representaion of random number
    */

@@ -10,10 +10,15 @@ public class Game {
 
   RoundSet currentSet;
 
+  /**
+  * Creates a new game and new RoundSet allowing to change choice,
+  * difficulty and player name.
+
+  * @param difficulty Enum Difficulty of either EASY, MEDIUM or HARD
+  * @param choice Enum Choice of either EVEN or ODD
+  * @param options players name
+  */
   public void newGame(Difficulty difficulty, Choice choice, String[] options) {
-
-
-
 
     // the first element of options[0]; is the name of the player
     MessageCli.WELCOME_PLAYER.printMessage(options[0]);
@@ -22,6 +27,10 @@ public class Game {
 
   }
 
+  /**
+  * Checks if currentSet is null and prints an error if it is otherwise
+  * it runs the playRound method of the currentSet.
+  */
   public void play() {
 
     if (currentSet == null) {
@@ -37,11 +46,11 @@ public class Game {
   }
 
 
-/**
- * Shows the current stats of the game and then calculates the winner
- * based on who won the most rounds and is a tie if won the same number.
- * Then deletes the current game.
- */
+  /**
+  * Shows the current stats of the game and then calculates the winner
+  * based on who won the most rounds and is a tie if won the same number.
+  * Then deletes the current game.
+  */
   public void endGame() {
 
     this.showStats();
@@ -59,9 +68,9 @@ public class Game {
   }
 
   /**
-   * Shows how many rounds each player of the current game
-   * has won and lost
-   */
+  * Shows how many rounds each player of the current game
+  * has won and lost.
+  */
   public void showStats() {
 
     if (currentSet == null) {

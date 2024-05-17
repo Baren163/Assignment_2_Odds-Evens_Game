@@ -7,16 +7,18 @@ public class HardBot implements Bot {
   private RoundSet currentSet;
 
   /**
-   * Generates a certain number of fingers based off the round number
-   * and if the previous round was won by the bot or not.
-   * 
-   * @param botSide Enum type Choice either EVEN or ODD
-   * @return string representation of the number of fingers to be shown
-   */
+  * Generates a certain number of fingers based off the round number
+  * and if the previous round was won by the bot or not.
+ 
+  * @param botSide Enum type Choice either EVEN or ODD
+  * @return string representation of the number of fingers to be shown
+  */
   public String generateFingers(Choice botSide) {
 
     GenerateNumber number = new GenerateNumber(new Random());
 
+    // If the current round is not 4 then just use the random strategy
+    // other wise start the post round 4 hard bot logic
     if (currentSet.getRoundNumber() < 4) {
 
       number.setStrategy(new Random());
