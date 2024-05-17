@@ -15,5 +15,6 @@ public class GenerateNumber {
   public String formNumber() {
     return strategy.generate();
   }
+
   
 }

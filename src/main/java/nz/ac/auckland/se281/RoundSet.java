@@ -15,6 +15,9 @@ public class RoundSet implements GameForm {
 
   private Difficulty botDifficulty;
 
+  private String previouStrategy;
+  private boolean didBotWin;
+
   public RoundSet(Choice choice, Difficulty difficulty, String playerName) {
     this.playerChoice = choice;
     this.botDifficulty = difficulty;
@@ -73,23 +76,30 @@ public class RoundSet implements GameForm {
     // PRINT_INFO_HAND("Player %s: fingers: %s")
     MessageCli.PRINT_INFO_HAND.printMessage(this.playerName, input);
 
+    if (this.botDifficulty.equals(Difficulty.HARD)) {
 
+      Bot computer = new HardBot();
+
+      computer.setRoundSet(this);
+
+    }
 
     Bot computer = BotFactory.createBot(this.botDifficulty);
 
+    computer.setRoundSet(this);
 
+    String botFingers = computer.generateFingers(this.botChoice);
 
-    String botFingers = computer.generateFingers(this.roundNumber, this.numberOfEvensPlayed, this.numberOfOddsPlayed, this.botChoice);
-
+    
     // PRINT_INFO_HAND("Player %s: fingers: %s")
     MessageCli.PRINT_INFO_HAND.printMessage("HAL-9000", botFingers);
 
     // Find winner of round
-   int sum = Integer.valueOf(botFingers) + inputInt;
+    int sum = Integer.valueOf(botFingers) + inputInt;
 
-   String sumString = String.valueOf(sum);
-   String winner;
-   String winningSide = "ODD";
+    String sumString = String.valueOf(sum);
+    String winner;
+    String winningSide = "";
 
     if (Utils.isEven(sum) && this.playerChoice.equals(Choice.EVEN) || Utils.isOdd(sum) && this.playerChoice.equals(Choice.ODD)) {
       winner = this.playerName;
@@ -112,6 +122,36 @@ public class RoundSet implements GameForm {
     } else if (Utils.isOdd(inputInt)) {
       this.numberOfOddsPlayed++;
     }
+
+    if (winner.equals("HAL-9000")) {
+      this.didBotWin = true;
+    } else {
+      this.didBotWin = false;
+    }
   }
 
+  public void setPreviousStrategy(String strategy) {
+    this.previouStrategy = strategy;
+  }
+
+  public String getPreviousStrategy() {
+    return this.previouStrategy;
+  }
+
+  public boolean getDidBotWin() {
+    return this.didBotWin;
+  }
+
+  public int getRoundNumber() {
+    return roundNumber;
+  }
+
+  public int getNumberOfEvensPlayed() {
+    return numberOfEvensPlayed;
+  }
+
+  public int getNumberOfOddsPlayed() {
+    return numberOfOddsPlayed;
+  }
+  
 }

@@ -4,7 +4,8 @@ import nz.ac.auckland.se281.Main.Choice;
 
 public interface Bot {
   
-  public String generateFingers(int roundNumber, int numberEvensPlayed, int numberOddsPlayed, Choice botSide);
+  public String generateFingers(Choice botSide);
 
+  public void setRoundSet(RoundSet currentSet);
 
 }

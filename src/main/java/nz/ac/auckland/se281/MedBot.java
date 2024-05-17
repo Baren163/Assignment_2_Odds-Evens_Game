@@ -4,18 +4,24 @@ import nz.ac.auckland.se281.Main.Choice;
 
 public class MedBot implements Bot {
 
-  public String generateFingers(int roundNumber, int numberEvensPlayed, int numberOddsPlayed, Choice botSide) {
+  private RoundSet currentSet;
+
+  public String generateFingers(Choice botSide) {
 
     GenerateNumber number = new GenerateNumber(new Random());
 
-    if (roundNumber < 4) {
+    if (currentSet.getRoundNumber() < 4) {
       return number.formNumber();
     } else {
-      number.setStrategy(new Top(numberEvensPlayed, numberOddsPlayed, botSide));
+      number.setStrategy(new Top(currentSet.getNumberOfEvensPlayed(), currentSet.getNumberOfOddsPlayed(), botSide));
       return number.formNumber();
     }
 
 
+  }
+
+  public void setRoundSet(RoundSet currentSet) {
+    this.currentSet = currentSet;
   }
 
 }
