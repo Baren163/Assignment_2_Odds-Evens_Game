@@ -6,10 +6,16 @@ public class EasyBot implements Bot {
 
   private RoundSet currentSet;
 
+  /**
+   * Generates a random number using the random strategy
+   * 
+   * @param botSide either EVEN or ODD
+   * @return string representaion of random number
+   */
   public String generateFingers(Choice botSide) {
     if (currentSet.getRoundNumber() >= 0) {
-    GenerateNumber number = new GenerateNumber(new Random());
-    return number.formNumber();
+      GenerateNumber number = new GenerateNumber(new Random());
+      return number.formNumber();
     }
     return "";
   }

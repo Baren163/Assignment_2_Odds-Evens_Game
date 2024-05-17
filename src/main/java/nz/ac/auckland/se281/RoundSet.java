@@ -36,6 +36,12 @@ public class RoundSet {
     this.numberOfOddsPlayed = 0;
   }
 
+  /**
+   * Plays through a full round of the game even or odd by
+   * incrementing the round number to start and then reading in
+   * a value of fingers for the player, then the bot and
+   * calculating who won
+   */
   public void playRound() {
 
     this.roundNumber++;
@@ -64,7 +70,9 @@ public class RoundSet {
       if (!Utils.isInteger(input)) {
         MessageCli.INVALID_INPUT.printMessage();
         validNumberGiven = false;
-      } if (inputInt > 5 | inputInt < 0) {
+      }
+      
+      if (inputInt > 5 | inputInt < 0) {
         MessageCli.INVALID_INPUT.printMessage();
         validNumberGiven = false;
       }
@@ -73,8 +81,7 @@ public class RoundSet {
         validNumberGiven = true;
       }
     }
-    // If you have made it here then you have a valid human finger amount as a string in variable input
-    //and as an int in inputInt
+
 
     // PRINT_INFO_HAND("Player %s: fingers: %s")
     MessageCli.PRINT_INFO_HAND.printMessage(this.playerName, input);

@@ -14,6 +14,14 @@ public class Top implements Strategy {
     this.botSide = botSide;
   }
   
+  /**
+   * Generates a random even number between 0 and 5 if the
+   * number of evens played is greater than the number of
+   * odds playes and generates a random odd number between
+   * 0 and 5 otherwise unless the evens and odds are equal
+   * in which case it will generate a random number between
+   * 0 and 5
+   */
   @Override
   public String generate() {
 

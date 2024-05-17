@@ -8,9 +8,9 @@ public class GenerateNumber {
     this.strategy = strategy;
   }
 
-  public void setStrategy(Strategy strategy){
+  public void setStrategy(Strategy strategy) {
     this.strategy = strategy;
-}
+  }
 
   public String formNumber() {
     return strategy.generate();

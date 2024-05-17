@@ -36,6 +36,12 @@ public class Game {
    
   }
 
+
+/**
+ * Shows the current stats of the game and then calculates the winner
+ * based on who won the most rounds and is a tie if won the same number.
+ * Then deletes the current game.
+ */
   public void endGame() {
 
     this.showStats();
@@ -52,6 +58,10 @@ public class Game {
     currentSet = null;
   }
 
+  /**
+   * Shows how many rounds each player of the current game
+   * has won and lost
+   */
   public void showStats() {
 
     if (currentSet == null) {
