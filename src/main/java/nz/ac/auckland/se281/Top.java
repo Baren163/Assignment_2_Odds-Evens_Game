@@ -11,8 +11,8 @@ public class Top implements Strategy {
   /**
   * Constructor for the Top strategy
 
-  * @param numberEvensPlayed
-  * @param numberOddsPlayed
+  * @param numberEvensPlayed the number of even fingers the player has shown
+  * @param numberOddsPlayed the number of odd fingers the player has shown
   * @param botSide is the Choice Enum and is what the bot needs to win
   */
   public Top(int numberEvensPlayed, int numberOddsPlayed, Choice botSide) {
