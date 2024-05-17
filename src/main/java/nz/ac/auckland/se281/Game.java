@@ -38,9 +38,16 @@ public class Game {
 
   public void endGame() {
 
+    this.showStats();
 
-
-
+    // PRINT_END_GAME("Player %s won the game!")
+    if (currentSet.getNumberOfGamesPlayerWon() > currentSet.getNumberOfGamesBotWon()) {
+      MessageCli.PRINT_END_GAME.printMessage(currentSet.getPlayerName());
+    } else if (currentSet.getNumberOfGamesPlayerWon() < currentSet.getNumberOfGamesBotWon()) {
+      MessageCli.PRINT_END_GAME.printMessage("HAL-9000");
+    } else if (currentSet.getNumberOfGamesPlayerWon() == currentSet.getNumberOfGamesBotWon()) {
+      MessageCli.PRINT_END_GAME_TIE.printMessage();
+    }
 
     currentSet = null;
   }

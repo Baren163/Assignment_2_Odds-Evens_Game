@@ -170,5 +170,13 @@ public class RoundSet {
   public String getNumberOfGamesBotWonString() {
     return String.valueOf(this.numberOfGamesBotWon);
   }
+
+  public int getNumberOfGamesPlayerWon() {
+    return this.numberOfGamesPlayerWon;
+  }
+
+  public int getNumberOfGamesBotWon() {
+    return this.numberOfGamesBotWon;
+  }
   
 }
