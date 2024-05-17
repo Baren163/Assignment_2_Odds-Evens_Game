@@ -18,6 +18,9 @@ public class RoundSet {
   private String previouStrategy;
   private boolean didBotWin;
 
+  private int numberOfGamesPlayerWon;
+  private int numberOfGamesBotWon;
+
   public RoundSet(Choice choice, Difficulty difficulty, String playerName) {
     this.playerChoice = choice;
     this.botDifficulty = difficulty;
@@ -103,9 +106,11 @@ public class RoundSet {
 
     if (Utils.isEven(sum) && this.playerChoice.equals(Choice.EVEN) || Utils.isOdd(sum) && this.playerChoice.equals(Choice.ODD)) {
       winner = this.playerName;
+      this.numberOfGamesPlayerWon++;
       winningSide = String.valueOf(this.playerChoice);
     } else {
       winner = "HAL-9000";
+      this.numberOfGamesBotWon++;
       if (this.playerChoice.equals(Choice.EVEN)) {
         winningSide = "ODD";
       } else if (this.playerChoice.equals(Choice.ODD)) {
@@ -142,6 +147,10 @@ public class RoundSet {
     return this.didBotWin;
   }
 
+  public String getPlayerName() {
+    return this.playerName;
+  }
+
   public int getRoundNumber() {
     return roundNumber;
   }
@@ -152,6 +161,14 @@ public class RoundSet {
 
   public int getNumberOfOddsPlayed() {
     return numberOfOddsPlayed;
+  }
+
+  public String getNumberOfGamesPlayerWonString() {
+    return String.valueOf(this.numberOfGamesPlayerWon);
+  }
+
+  public String getNumberOfGamesBotWonString() {
+    return String.valueOf(this.numberOfGamesBotWon);
   }
   
 }

@@ -52,6 +52,9 @@ public class Game {
       return;
     }
 
+    // PRINT_PLAYER_WINS("%s won %s rounds and lost %s rounds")
+    MessageCli.PRINT_PLAYER_WINS.printMessage(currentSet.getPlayerName(), currentSet.getNumberOfGamesPlayerWonString(), currentSet.getNumberOfGamesBotWonString());
+    MessageCli.PRINT_PLAYER_WINS.printMessage("HAL-9000", currentSet.getNumberOfGamesBotWonString(), currentSet.getNumberOfGamesPlayerWonString());
   }
 
 }
