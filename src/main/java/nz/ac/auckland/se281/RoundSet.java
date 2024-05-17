@@ -3,7 +3,7 @@ package nz.ac.auckland.se281;
 import nz.ac.auckland.se281.Main.Choice;
 import nz.ac.auckland.se281.Main.Difficulty;
 
-public class RoundSet implements GameForm {
+public class RoundSet {
  
   private int roundNumber;
   private int numberOfEvensPlayed;

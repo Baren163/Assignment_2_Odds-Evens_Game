@@ -45,6 +45,13 @@ public class Game {
     currentSet = null;
   }
 
-  public void showStats() {}
-}
+  public void showStats() {
 
+    if (currentSet == null) {
+      MessageCli.GAME_NOT_STARTED.printMessage();
+      return;
+    }
+
+  }
+
+}
